@@ -32,7 +32,7 @@ module.exports = function (grunt) {
                 tasks: ['copy']
             },
             less: {
-                files: ['src/styles/*.less'],
+                files: ['src/styles/*.less', 'src/styles/**/*.less'],
                 tasks: ['less']
             }
         },

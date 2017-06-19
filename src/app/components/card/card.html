@@ -1,5 +1,9 @@
-<div class="card">
-    <h1>{{ $ctrl.title }}</h1>
-    <h2>Card description</h2>
-    <button class="btn btn-default">Card click</button>
+<div class="card" ng-click="$ctrl.flipCard();">
+    <h1>&prod;</h1>
+
+    <div ng-if="$ctrl.card.isFlipped">
+        <span>The card has flipped revealing some insights: </span>
+        <p>pairKey: {{ $ctrl.card.pairKey }}</p>
+        <p>id: {{ $ctrl.card.id }}</p>
+    </div>
 </div>

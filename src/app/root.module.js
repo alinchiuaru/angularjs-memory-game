@@ -12,7 +12,6 @@ export const root = angular
     .config(($locationProvider, $urlRouterProvider) => {
         'ngInject';
 
-        $urlRouterProvider.otherwise('/card');
-        // $locationProvider.html5Mode(true);
+        $urlRouterProvider.otherwise('/cards/2');
     })
     .name;
