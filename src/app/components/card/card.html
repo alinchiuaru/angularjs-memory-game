@@ -1,9 +1,13 @@
-<div class="card" ng-click="$ctrl.flipCard();">
-    <h1>&prod;</h1>
+<div class="card-container" ng-click="$ctrl.flipCard();">
+    <div class="card" ng-class="{ 'flipped': $ctrl.card.isFlipped }">
+        <div class="side">
+            <h1>Front</h1>
+        </div>
 
-    <div ng-if="$ctrl.card.isFlipped">
-        <span>The card has flipped revealing some insights: </span>
-        <p>pairKey: {{ $ctrl.card.pairKey }}</p>
-        <p>id: {{ $ctrl.card.id }}</p>
+        <div class="side back">
+            <span>The card has flipped revealing some insights: </span>
+            <p>pairKey: {{ $ctrl.card.pairKey }}</p>
+            <p>id: {{ $ctrl.card.id }}</p>
+        </div>
     </div>
 </div>
