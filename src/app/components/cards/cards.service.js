@@ -56,7 +56,7 @@ export class CardsService {
     _watchCounter() {
         this.$rootScope.$watch('matchedPairsCounter', (newValue) => {
             if ( newValue === this.numberOfPairs ) {
-                alert('GAME OVER! YOU WON');
+                this.$rootScope.$broadcast('game-won');
             }
         });
     }

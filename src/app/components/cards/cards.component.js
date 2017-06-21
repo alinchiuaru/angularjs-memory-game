@@ -1,11 +1,13 @@
 export const cardsComponent = {
     templateUrl: './templates/cards.html',
     controller: class CardsController {
-        constructor(CardsService, $stateParams) {
+        constructor(CardsService, $stateParams, $scope, $timeout) {
             'ngInject';
 
             this.cardsService = CardsService;
             this.$stateParams = $stateParams;
+            this.$scope = $scope;
+            this.$timeout = $timeout;
             this.numberOfPairs = this.$stateParams.numberOfPairs;
             this.cardsPerPair = this.$stateParams.cardsPerPair;
 
@@ -15,6 +17,10 @@ export const cardsComponent = {
 
         $onInit() {
             this.cards = this.cardsService.getCards(this.numberOfPairs, this.cardsPerPair);
+
+            this.$scope.$on('game-won', () => {
+                alert('GAME OVER! YOU WON');
+            });
         }
 
         flipCard(event) {
@@ -34,13 +40,13 @@ export const cardsComponent = {
             if ( this.cardsService.checkPair(this.flippedCards) ) {
                 this.flippedCards = [];
             } else {
-                this.flipHideCards();
-                this.flippedCards = [];
+                this.$timeout(this.flipHideCards.bind(this), 1000);
             }
         }
 
         flipHideCards() {
             this.flippedCards.forEach( card => (card.isFlipped = false));
+            this.flippedCards = [];
         }
     },
 };
