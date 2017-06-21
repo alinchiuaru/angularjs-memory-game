@@ -1,8 +1,13 @@
 import _ from 'underscore';
 
 export class CardsService {
-    contructor() {
+    constructor($rootScope) {
         'ngInject';
+
+        this.$rootScope = $rootScope;
+        this.$rootScope.matchedPairsCounter = 0;
+
+        this.cardsArray = [];
     }
 
     _generateCards(numberOfPairs, cardsPerPair) {
@@ -24,8 +29,9 @@ export class CardsService {
     }
 
     getCards(numberOfPairs, cardsPerPair) {
-        this.cardsArray = [];
+        this.numberOfPairs = parseInt(numberOfPairs);
         this._generateCards(numberOfPairs, cardsPerPair);
+        this._watchCounter();
 
         return this._shuffleCards();
     }
@@ -36,11 +42,23 @@ export class CardsService {
         });
 
         if( _.uniq(pairKeys).length === 1 ) {
-            console.log('GOT A MATCH ON PAIR:');
+            console.log('GOT A MATCH');
+
+            this.$rootScope.matchedPairsCounter++;
+
             return true;
         } else {
             console.log('NO MATCH');
             return false;
         }
     }
+
+    _watchCounter() {
+        this.$rootScope.$watch('matchedPairsCounter', (newValue) => {
+            if ( newValue === this.numberOfPairs ) {
+                alert('GAME OVER! YOU WON');
+            }
+        });
+    }
+
 }

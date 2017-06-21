@@ -11,7 +11,6 @@ export const cardsComponent = {
 
             this.cards = [];
             this.flippedCards = [];
-            this.matchesCounter = 0;
         }
 
         $onInit() {
@@ -32,32 +31,12 @@ export const cardsComponent = {
         }
 
         checkMatch() {
-
             if ( this.cardsService.checkPair(this.flippedCards) ) {
-                this.matchesCounter++;
                 this.flippedCards = [];
             } else {
                 this.flipHideCards();
                 this.flippedCards = [];
             }
-
-            // const matchedCards = this.flippedCards.filter( card => {
-            //     return card.pairKey === pairKey;
-            // });
-            //
-            // if ( matchedCards.length === this.flippedCards.length ) {
-            //     console.log('GOT A MATCH ON PAIR:', pairKey);
-            //     this.matchesCounter++;
-            //     this.flippedCards = [];
-            //
-            //     if (this.matchesCounter === this.cards.length/2) {
-            //         alert('you won');
-            //     }
-            // } else {
-            //     console.log('NO MATCH');
-            //     this.flipHideCards();
-            //     this.flippedCards = [];
-            // }
         }
 
         flipHideCards() {
