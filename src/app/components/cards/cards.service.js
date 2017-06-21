@@ -5,9 +5,6 @@ export class CardsService {
         'ngInject';
 
         this.$rootScope = $rootScope;
-        this.$rootScope.matchedPairsCounter = 0;
-
-        this.cardsArray = [];
     }
 
     _generateCards(numberOfPairs, cardsPerPair) {
@@ -29,6 +26,9 @@ export class CardsService {
     }
 
     getCards(numberOfPairs, cardsPerPair) {
+        this.$rootScope.matchedPairsCounter = 0;
+        this.cardsArray = [];
+        
         this.numberOfPairs = parseInt(numberOfPairs);
         this._generateCards(numberOfPairs, cardsPerPair);
         this._watchCounter();
