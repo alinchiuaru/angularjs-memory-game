@@ -19,7 +19,7 @@ export const cardsComponent = {
             this.cards = this.cardsService.getCards(this.numberOfPairs, this.cardsPerPair);
 
             this.$scope.$on('game-won', () => {
-                alert('GAME OVER! YOU WON');
+                this.$timeout( () => { alert('GAME OVER. YOU WON!') }, 1000 );
             });
 
             this.bsCol = `col-md-${12 / this.cardsPerPair}`;
