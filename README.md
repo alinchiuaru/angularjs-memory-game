@@ -2,8 +2,8 @@
 Memory game built using AngularJS (1.x) w/ ES2015, Grunt, Boostrap, LESS.
 
 ## Start:
-npm install 
-grunt
+* npm install 
+* grunt
 
 ## Todo:
 * Setup karma and jasmine for unit-testing
