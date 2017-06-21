@@ -1,5 +1,5 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import { rootComponent } from './root.component';
 import { components } from './components/components.module';
 import { common } from './common/common.module';
@@ -13,7 +13,5 @@ export const root = angular
     .component('root', rootComponent)
     .config(($locationProvider, $urlRouterProvider) => {
         'ngInject';
-
-        // $urlRouterProvider.otherwise('/cards/2');
     })
     .name;

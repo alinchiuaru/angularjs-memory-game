@@ -1,4 +1,4 @@
-.card-container {
+.Card__container {
     cursor: pointer;
     min-height: 250px;
     perspective: 600;
@@ -6,32 +6,32 @@
     margin-bottom: 20px;
 }
 
-.card {
+.Card {
     height: 100%;
     position: absolute;
     transform-style: preserve-3d;
     transition: all 1s ease-in-out;
     width: 100%;
+}
 
-    &.flipped {
-        transform: rotateY(180deg);
-    }
+.Card--flipped {
+    transform: rotateY(180deg);
+}
 
-    .side {
-        backface-visibility: hidden;
-        border-radius: 6px;
-        height: 100%;
-        position: absolute;
-        overflow: hidden;
-        width: 100%;
-        background: gold;
-    }
+.Card__side {
+    backface-visibility: hidden;
+    border-radius: 6px;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+    background: gold;
+}
 
-    .back {
-        background: #eaeaed;
-        color: #0087cc;
-        line-height: 150px;
-        text-align: center;
-        transform: rotateY(180deg);
-    }
+.Card__side--back {
+    background: #eaeaed;
+    color: #0087cc;
+    line-height: 150px;
+    text-align: center;
+    transform: rotateY(180deg);
 }
