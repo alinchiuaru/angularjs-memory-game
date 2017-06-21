@@ -21,6 +21,8 @@ export const cardsComponent = {
             this.$scope.$on('game-won', () => {
                 alert('GAME OVER! YOU WON');
             });
+
+            this.bsCol = `col-md-${12 / this.cardsPerPair}`;
         }
 
         flipCard(event) {
