@@ -5,26 +5,17 @@ export class CardsService {
         'ngInject';
     }
 
-    _generateCards(n) {
-        const self = this;
-
-        for ( let i = 0; i < n*n; i++ ) {
-            self.cardsArray.push({
-                id: _.uniqueId('card_'),
-                pairKey: -1,
-                isFlipped: false,
-            });
-        }
-    }
-
-    _assignPairs() {
-        const step = this.cardsArray.length % 2 === 0 ? 2 : 1;
-
-        for ( let i = 0; i < this.cardsArray.length; i = i + step ) {
+    _generateCards(numberOfPairs, cardsPerPair) {
+        for ( let i = 0; i < numberOfPairs; i++) {
             let pairKey = _.uniqueId('pair_');
 
-            this.cardsArray[i].pairKey = pairKey;
-            this.cardsArray[i+1].pairKey = pairKey;
+            for ( let j = 0; j < cardsPerPair; j++ ) {
+                this.cardsArray.push({
+                    id: _.uniqueId('card_'),
+                    pairKey,
+                    isFlipped: false,
+                })
+            }
         }
     }
 
@@ -32,12 +23,24 @@ export class CardsService {
         return _.shuffle(this.cardsArray);
     }
 
-    getCards(n) {
+    getCards(numberOfPairs, cardsPerPair) {
         this.cardsArray = [];
-
-        this._generateCards(n);
-        this._assignPairs();
+        this._generateCards(numberOfPairs, cardsPerPair);
 
         return this._shuffleCards();
+    }
+
+    checkPair(pair) {
+        const pairKeys = pair.map( card => {
+            return card.pairKey;
+        });
+
+        if( _.uniq(pairKeys).length === 1 ) {
+            console.log('GOT A MATCH ON PAIR:');
+            return true;
+        } else {
+            console.log('NO MATCH');
+            return false;
+        }
     }
 }

@@ -13,7 +13,7 @@ export const cards = angular
 
         $stateProvider
             .state('cards', {
-                url: '/cards/:gridSize',
+                url: '/cards/:numberOfPairs/:cardsPerPair',
                 component: 'cards',
             });
     })
